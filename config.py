@@ -5,15 +5,30 @@ from pathlib import Path
 PROJECT_NAME = "WOH_lora"
 TRIGGER_WORD = "WOH portrait style"
 
+# SDXL specific params
+IMAGE_SIZE = 1024
+MAX_TOKEN_LENGTH = 77
+
+# VAE parameters
+VAE_TYPE = "mps"
+ENABLE_FP16 = True
+
 # LoRA Parameters
 LORA_RANK = 16
 LORA_ALPHA = 16
 LORA_DROPOUT = 0.1
 
 # Training Parameters
-BATCH_SIZE = 1
+BATCH_SIZE = 2
 GRADIENT_ACCUMULATION_STEPS = 4
+MIXED_PRECISION = "fp16"
 SEED = 42
+
+SCHEDULER_CONFIG = {
+    "beta_start": 0.00085,
+    "beta_end": 0.012,
+    "beta_schedule": "scaled_linear"
+}
 
 # For testing 
 LEARNING_RATE_TEST = 2e-4
@@ -103,6 +118,15 @@ class ProjectConfig:
             })
 
         return base_config
+    
+    def get_model_config(self):
+        return {
+            "vae": VAE_TYPE,
+            "enable_fp16": ENABLE_FP16,
+            "scheduler": SCHEDULER_CONFIG,
+            "image_size": IMAGE_SIZE,
+            "max_tokens": MAX_TOKEN_LENGTH
+        }
 
     def __str__(self):
         return f"""Project Configuration:

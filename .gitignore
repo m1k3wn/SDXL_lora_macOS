@@ -40,3 +40,6 @@ large_models/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
+
+#Acces token
+.env

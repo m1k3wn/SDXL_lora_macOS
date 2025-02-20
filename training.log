@@ -246,3 +246,57 @@
 2025-02-20 14:40:39,552 - INFO - Resized 0 images, skipped 40
 2025-02-20 14:40:39,554 - INFO - Dataset preparation completed successfully
 2025-02-20 14:41:05,948 - INFO - Starting training...
+2025-02-20 15:18:55,759 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 15:18:55,759 - INFO - Trigger word: WOH portrait style
+2025-02-20 15:18:55,759 - INFO - Starting dataset preparation...
+2025-02-20 15:18:55,761 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 15:18:55,779 - INFO - Resized 0 images, skipped 40
+2025-02-20 15:18:55,781 - INFO - Dataset preparation completed successfully
+2025-02-20 15:23:19,344 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 15:23:19,344 - INFO - Trigger word: WOH portrait style
+2025-02-20 15:23:19,344 - INFO - Starting dataset preparation...
+2025-02-20 15:23:19,344 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 15:23:19,350 - INFO - Resized 0 images, skipped 40
+2025-02-20 15:23:19,352 - INFO - Dataset preparation completed successfully
+2025-02-20 15:23:44,811 - INFO - Test mode active: Using 512px test dataset for both training and validation.
+2025-02-20 15:23:45,795 - INFO - Starting training...
+2025-02-20 15:28:40,807 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 15:28:40,807 - INFO - Trigger word: WOH portrait style
+2025-02-20 15:28:40,807 - INFO - Starting dataset preparation...
+2025-02-20 15:28:40,808 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 15:28:40,813 - INFO - Resized 0 images, skipped 40
+2025-02-20 15:28:40,815 - INFO - Dataset preparation completed successfully
+2025-02-20 15:28:45,259 - INFO - Test mode active: Using 512px test dataset for both training and validation.
+2025-02-20 15:28:46,131 - INFO - Starting training...
+2025-02-20 15:33:08,147 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 15:33:08,147 - INFO - Trigger word: WOH portrait style
+2025-02-20 15:33:08,147 - INFO - Starting dataset preparation...
+2025-02-20 15:33:08,148 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 15:33:08,153 - INFO - Resized 0 images, skipped 40
+2025-02-20 15:33:08,155 - INFO - Dataset preparation completed successfully
+2025-02-20 15:33:12,879 - INFO - Test mode active: Using 512px test dataset for both training and validation.
+2025-02-20 15:33:13,995 - INFO - Starting training...
+2025-02-20 15:42:05,933 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 15:42:05,933 - INFO - Trigger word: WOH portrait style
+2025-02-20 15:42:05,933 - INFO - Starting dataset preparation...
+2025-02-20 15:42:05,934 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 15:42:05,940 - INFO - Resized 0 images, skipped 40
+2025-02-20 15:42:05,942 - INFO - Dataset preparation completed successfully
+2025-02-20 15:42:10,611 - INFO - Test mode active: Using 512px test dataset for both training and validation.
+2025-02-20 15:42:11,473 - INFO - Starting training...
+2025-02-20 15:46:42,143 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 15:46:42,143 - INFO - Trigger word: WOH portrait style
+2025-02-20 15:46:42,143 - INFO - Starting dataset preparation...
+2025-02-20 15:46:42,144 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 15:46:42,150 - INFO - Resized 0 images, skipped 40
+2025-02-20 15:46:42,152 - INFO - Dataset preparation completed successfully
+2025-02-20 15:46:46,787 - INFO - Test mode active: Using 512px test dataset for both training and validation.
+2025-02-20 15:46:47,794 - INFO - Starting training...
+2025-02-20 16:00:55,439 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 16:00:55,440 - INFO - Trigger word: WOH portrait style
+2025-02-20 16:00:55,440 - INFO - Starting dataset preparation...
+2025-02-20 16:00:55,440 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 16:00:55,446 - INFO - Resized 0 images, skipped 40
+2025-02-20 16:00:55,447 - INFO - Dataset preparation completed successfully
+2025-02-20 16:01:00,218 - INFO - Test mode active: Using 512px test dataset for both training and validation.
+2025-02-20 16:01:01,240 - INFO - Starting training...
