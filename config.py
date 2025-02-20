@@ -17,14 +17,14 @@ SEED = 42
 
 # For testing 
 LEARNING_RATE_TEST = 2e-4
-EPOCHS_TEST = 5
+EPOCHS_TEST = 20
 SAVE_STEPS_TEST = 50
 VALIDATION_STEPS_TEST = 25
 
 # For production
 LEARNING_RATE_PRODUCTION = 1e-4
 EPOCHS_PRODUCTION = 100
-MIXED_PRECISION = "fp16"
+MIXED_PRECISION = "no"
 SAVE_STEPS_PRODUCTION = 100
 VALIDATION_STEPS_PRODUCTION = 50
 
@@ -45,7 +45,7 @@ class ProjectConfig:
     
     def _setup_paths(self):
         return {
-            "base_model": Path("/base_model"),
+            "base_model": self.base_path / "base_model",
             "dataset": {
                 "test": self.project_dir / "dataset/test_dataset",
                 "train": self.project_dir / "dataset/train_dataset",

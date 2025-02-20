@@ -1,0 +1,12 @@
+2025-02-20 12:25:12,187 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:25:12,187 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:25:12,187 - INFO - Starting dataset preparation...
+2025-02-20 12:25:12,188 - ERROR - Metadata validation failed:
+2025-02-20 12:25:12,188 - ERROR -   - Missing train metadata file
+2025-02-20 12:25:12,188 - ERROR - Dataset preparation failed
+2025-02-20 12:31:22,842 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:31:22,842 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:31:22,842 - INFO - Starting dataset preparation...
+2025-02-20 12:31:22,842 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:31:22,847 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:31:22,849 - INFO - Dataset preparation completed successfully
