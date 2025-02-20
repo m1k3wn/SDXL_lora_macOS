@@ -1,5 +1,3 @@
-# config.py
-
 import os
 from pathlib import Path
 
@@ -7,28 +5,50 @@ from pathlib import Path
 PROJECT_NAME = "WOH_lora"
 TRIGGER_WORD = "WOH portrait style"
 
+# LoRA Parameters
+LORA_RANK = 16
+LORA_ALPHA = 16
+LORA_DROPOUT = 0.1
+
+# Training Parameters
+BATCH_SIZE = 1
+GRADIENT_ACCUMULATION_STEPS = 4
+SEED = 42
+
+# For testing 
+LEARNING_RATE_TEST = 2e-4
+EPOCHS_TEST = 5
+SAVE_STEPS_TEST = 50
+VALIDATION_STEPS_TEST = 25
+
+# For production
+LEARNING_RATE_PRODUCTION = 1e-4
+EPOCHS_PRODUCTION = 100
+MIXED_PRECISION = "fp16"
+SAVE_STEPS_PRODUCTION = 100
+VALIDATION_STEPS_PRODUCTION = 50
+
+# Style Settings
+BASE_PROMPT = "{trigger_word}, monochromatic expressive portrait artwork, dramatic black ink marks, dynamic linework, bold shadows, gestural marks, textural smudges, greyscale shading, rough marks, dramatic contrast"
+NEGATIVE_PROMPT = "photorealistic, photograph, color, watercolor, 3d render, anime, cartoon"
+
 class ProjectConfig:
     def __init__(self, mode="production"):
-        # Test or production mode 
         self.mode = mode
-
-        # Base paths
         self.base_path = Path("/Volumes/Desktop SSD/AI-Projects/SDXL_LORAS")
-        
-        # Project specific paths
         self.project_name = PROJECT_NAME
         self.trigger_word = TRIGGER_WORD
         self.project_dir = self.base_path / self.project_name
-        
-        # Create project directory if it doesn't exist
         self.project_dir.mkdir(parents=True, exist_ok=True)
-
-        # Define all project paths
-        self.paths = {
+        self.paths = self._setup_paths()
+        self._create_directories()
+    
+    def _setup_paths(self):
+        return {
             "base_model": Path("/base_model"),
             "dataset": {
-                "test": self.project_dir / "dataset/test_dataset",    # 512px images
-                "train": self.project_dir / "dataset/train_dataset",  # 1024px images
+                "test": self.project_dir / "dataset/test_dataset",
+                "train": self.project_dir / "dataset/train_dataset",
             },
             "metadata": {
                 "test": self.project_dir / "dataset/test_metadata.json",
@@ -37,62 +57,54 @@ class ProjectConfig:
             "output": self.project_dir / "output",
             "config": self.project_dir / "config.yaml"
         }
-        
-        # Create necessary directories
-        self._create_directories()
     
     def _create_directories(self):
-        """Create all necessary directories in the project structure"""
         for path in self.paths.values():
             if isinstance(path, dict):
                 for subpath in path.values():
-                    if not subpath.suffix:  # Only create directory if it's not a file path
+                    if not subpath.suffix:
                         subpath.mkdir(parents=True, exist_ok=True)
-            else:
-                if not path.suffix:  # Only create directory if it's not a file path
-                    path.mkdir(parents=True, exist_ok=True)
+            elif not path.suffix:
+                path.mkdir(parents=True, exist_ok=True)
     
     def get_training_config(self):
         base_config = {
             "training": {
-                "batch_size": 1,
-                "gradient_accumulation_steps": 4,
-                "seed": 42,
-                "mixed_precision": "fp16",
-                "save_steps": 100,
-                "validation_steps": 50
+                "batch_size": BATCH_SIZE,
+                "gradient_accumulation_steps": GRADIENT_ACCUMULATION_STEPS,
+                "seed": SEED,
+                "mixed_precision": MIXED_PRECISION,
             },
             "lora": {
-                "rank": 4,
-                "alpha": 4,
-                "dropout": 0.0
+                "rank": LORA_RANK,
+                "alpha": LORA_ALPHA,
+                "dropout": LORA_DROPOUT
             },
             "style": {
                 "trigger_word": self.trigger_word,
-                "base_prompt": "{trigger_word}, monochromatic expressive portrait artwork, dramatic black ink marks, dynamic linework, bold shadows, gestural marks, textural smudges, greyscale shading, rough marks, dramatic contrast",
-                "negative_prompt": "photorealistic, photograph, color, watercolor, 3d render, anime, cartoon"
+                "base_prompt": BASE_PROMPT,
+                "negative_prompt": NEGATIVE_PROMPT
             }
         }
 
         if self.mode == "test":
             base_config["training"].update({
-                "learning_rate": 2e-4,
-                "num_epochs": 5,
-                "save_steps": 50,
-                "validation_steps": 25
+                "learning_rate": LEARNING_RATE_TEST,
+                "num_epochs": EPOCHS_TEST,
+                "save_steps": SAVE_STEPS_TEST,
+                "validation_steps": VALIDATION_STEPS_TEST
             })
         else:
             base_config["training"].update({
-                "learning_rate": 1e-4,
-                "num_epochs": 100,
-                "save_steps": 100,
-                "validation_steps": 50
+                "learning_rate": LEARNING_RATE_PRODUCTION,
+                "num_epochs": EPOCHS_PRODUCTION,
+                "save_steps": SAVE_STEPS_PRODUCTION,
+                "validation_steps": VALIDATION_STEPS_PRODUCTION
             })
 
         return base_config
-        
+
     def __str__(self):
-        """Pretty print the configuration"""
         return f"""Project Configuration:
 Project Name: {self.project_name}
 Trigger Word: {self.trigger_word}
@@ -105,8 +117,3 @@ Metadata:
   Train: {self.paths['metadata']['train']}
 Output: {self.paths['output']}
 """
-
-if __name__ == "__main__":
-    # Test configuration
-    config = ProjectConfig()
-    print(config)
