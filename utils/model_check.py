@@ -4,7 +4,7 @@ import torch
 # Convert and save in Diffusers format
 pipe = StableDiffusionXLPipeline.from_single_file(
     "/Volumes/Desktop SSD/AI-Projects/ComfyUI/models/checkpoints/sd_xl_base_1.0.safetensors",
-    torch_dtype=torch.float16,
+    torch_dtype=torch.float32,
     use_safetensors=True
 )
 

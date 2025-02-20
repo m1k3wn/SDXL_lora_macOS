@@ -16,3 +16,226 @@
 2025-02-20 12:33:42,387 - INFO - Found 20 test and 20 train images in metadata
 2025-02-20 12:33:42,392 - INFO - Resized 0 images, skipped 40
 2025-02-20 12:33:42,394 - INFO - Dataset preparation completed successfully
+2025-02-20 12:36:33,854 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:36:33,854 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:36:33,854 - INFO - Starting dataset preparation...
+2025-02-20 12:36:33,854 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:36:33,859 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:36:33,861 - INFO - Dataset preparation completed successfully
+2025-02-20 12:36:37,959 - INFO - Starting training...
+2025-02-20 12:38:48,386 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:38:48,386 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:38:48,386 - INFO - Starting dataset preparation...
+2025-02-20 12:38:48,387 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:38:48,392 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:38:48,394 - INFO - Dataset preparation completed successfully
+2025-02-20 12:38:52,528 - INFO - Starting training...
+2025-02-20 12:40:58,334 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:40:58,334 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:40:58,334 - INFO - Starting dataset preparation...
+2025-02-20 12:40:58,335 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:40:58,340 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:40:58,341 - INFO - Dataset preparation completed successfully
+2025-02-20 12:41:02,413 - INFO - Starting training...
+2025-02-20 12:41:57,135 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:41:57,135 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:41:57,135 - INFO - Starting dataset preparation...
+2025-02-20 12:41:57,136 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:41:57,141 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:41:57,143 - INFO - Dataset preparation completed successfully
+2025-02-20 12:42:01,302 - INFO - Starting training...
+2025-02-20 12:43:18,354 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:43:18,354 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:43:18,354 - INFO - Starting dataset preparation...
+2025-02-20 12:43:18,354 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:43:18,359 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:43:18,361 - INFO - Dataset preparation completed successfully
+2025-02-20 12:43:22,460 - INFO - Starting training...
+2025-02-20 12:52:30,222 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:52:30,223 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:52:30,223 - INFO - Starting dataset preparation...
+2025-02-20 12:52:30,223 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:52:30,228 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:52:30,230 - INFO - Dataset preparation completed successfully
+2025-02-20 12:52:31,597 - INFO - Starting training...
+2025-02-20 12:54:15,632 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:54:15,632 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:54:15,632 - INFO - Starting dataset preparation...
+2025-02-20 12:54:15,633 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:54:15,640 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:54:15,641 - INFO - Dataset preparation completed successfully
+2025-02-20 12:54:17,032 - INFO - Starting training...
+2025-02-20 12:56:18,747 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:56:18,747 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:56:18,748 - INFO - Starting dataset preparation...
+2025-02-20 12:56:18,748 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:56:18,754 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:56:18,756 - INFO - Dataset preparation completed successfully
+2025-02-20 12:56:20,023 - INFO - Starting training...
+2025-02-20 12:58:30,108 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:58:30,108 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:58:30,109 - INFO - Starting dataset preparation...
+2025-02-20 12:58:30,109 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:58:30,114 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:58:30,116 - INFO - Dataset preparation completed successfully
+2025-02-20 12:58:31,472 - INFO - Starting training...
+2025-02-20 12:59:07,517 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 12:59:07,517 - INFO - Trigger word: WOH portrait style
+2025-02-20 12:59:07,517 - INFO - Starting dataset preparation...
+2025-02-20 12:59:07,517 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 12:59:07,523 - INFO - Resized 0 images, skipped 40
+2025-02-20 12:59:07,525 - INFO - Dataset preparation completed successfully
+2025-02-20 12:59:08,948 - INFO - Starting training...
+2025-02-20 13:11:41,694 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:11:41,694 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:11:41,695 - INFO - Starting dataset preparation...
+2025-02-20 13:11:41,695 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:11:41,701 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:11:41,703 - INFO - Dataset preparation completed successfully
+2025-02-20 13:11:43,008 - INFO - Starting training...
+2025-02-20 13:12:40,096 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:12:40,096 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:12:40,096 - INFO - Starting dataset preparation...
+2025-02-20 13:12:40,097 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:12:40,102 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:12:40,104 - INFO - Dataset preparation completed successfully
+2025-02-20 13:13:26,237 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:13:26,238 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:13:26,238 - INFO - Starting dataset preparation...
+2025-02-20 13:13:26,238 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:13:26,243 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:13:26,245 - INFO - Dataset preparation completed successfully
+2025-02-20 13:13:31,113 - INFO - Starting training...
+2025-02-20 13:21:38,684 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:21:38,684 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:21:38,684 - INFO - Starting dataset preparation...
+2025-02-20 13:21:38,685 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:21:38,691 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:21:38,692 - INFO - Dataset preparation completed successfully
+2025-02-20 13:21:43,347 - INFO - Starting training...
+2025-02-20 13:24:21,856 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:24:21,856 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:24:21,856 - INFO - Starting dataset preparation...
+2025-02-20 13:24:21,856 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:24:21,862 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:24:21,864 - INFO - Dataset preparation completed successfully
+2025-02-20 13:24:26,533 - INFO - Starting training...
+2025-02-20 13:25:59,119 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:25:59,119 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:25:59,119 - INFO - Starting dataset preparation...
+2025-02-20 13:25:59,120 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:25:59,126 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:25:59,128 - INFO - Dataset preparation completed successfully
+2025-02-20 13:26:03,765 - INFO - Starting training...
+2025-02-20 13:29:50,871 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:29:50,871 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:29:50,871 - INFO - Starting dataset preparation...
+2025-02-20 13:29:50,871 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:29:50,877 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:29:50,878 - INFO - Dataset preparation completed successfully
+2025-02-20 13:29:55,612 - INFO - Starting training...
+2025-02-20 13:55:54,834 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:55:54,834 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:55:54,834 - INFO - Starting dataset preparation...
+2025-02-20 13:55:54,835 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:55:54,841 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:55:54,843 - INFO - Dataset preparation completed successfully
+2025-02-20 13:56:00,487 - INFO - Starting training...
+2025-02-20 13:59:19,925 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 13:59:19,925 - INFO - Trigger word: WOH portrait style
+2025-02-20 13:59:19,925 - INFO - Starting dataset preparation...
+2025-02-20 13:59:19,925 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 13:59:19,931 - INFO - Resized 0 images, skipped 40
+2025-02-20 13:59:19,933 - INFO - Dataset preparation completed successfully
+2025-02-20 13:59:25,727 - INFO - Starting training...
+2025-02-20 14:01:18,805 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:01:18,805 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:01:18,805 - INFO - Starting dataset preparation...
+2025-02-20 14:01:18,806 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:01:18,812 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:01:18,813 - INFO - Dataset preparation completed successfully
+2025-02-20 14:01:24,291 - INFO - Starting training...
+2025-02-20 14:04:07,408 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:04:07,408 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:04:07,408 - INFO - Starting dataset preparation...
+2025-02-20 14:04:07,408 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:04:07,414 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:04:07,416 - INFO - Dataset preparation completed successfully
+2025-02-20 14:04:13,322 - INFO - Starting training...
+2025-02-20 14:04:55,284 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:04:55,284 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:04:55,284 - INFO - Starting dataset preparation...
+2025-02-20 14:04:55,285 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:04:55,291 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:04:55,292 - INFO - Dataset preparation completed successfully
+2025-02-20 14:05:01,133 - INFO - Starting training...
+2025-02-20 14:07:38,393 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:07:38,393 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:07:38,393 - INFO - Starting dataset preparation...
+2025-02-20 14:07:38,394 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:07:38,399 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:07:38,401 - INFO - Dataset preparation completed successfully
+2025-02-20 14:07:43,922 - INFO - Starting training...
+2025-02-20 14:12:08,388 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:12:08,388 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:12:08,388 - INFO - Starting dataset preparation...
+2025-02-20 14:12:08,389 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:12:08,394 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:12:08,396 - INFO - Dataset preparation completed successfully
+2025-02-20 14:12:14,199 - INFO - Starting training...
+2025-02-20 14:15:10,101 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:15:10,101 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:15:10,101 - INFO - Starting dataset preparation...
+2025-02-20 14:15:10,101 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:15:10,107 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:15:10,108 - INFO - Dataset preparation completed successfully
+2025-02-20 14:15:15,703 - INFO - Starting training...
+2025-02-20 14:18:04,401 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:18:04,401 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:18:04,402 - INFO - Starting dataset preparation...
+2025-02-20 14:18:04,402 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:18:04,408 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:18:04,409 - INFO - Dataset preparation completed successfully
+2025-02-20 14:18:10,190 - INFO - Starting training...
+2025-02-20 14:18:36,275 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:18:36,275 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:18:36,275 - INFO - Starting dataset preparation...
+2025-02-20 14:18:36,276 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:18:36,281 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:18:36,283 - INFO - Dataset preparation completed successfully
+2025-02-20 14:18:42,066 - INFO - Starting training...
+2025-02-20 14:20:19,587 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:20:19,587 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:20:19,587 - INFO - Starting dataset preparation...
+2025-02-20 14:20:19,588 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:20:19,593 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:20:19,595 - INFO - Dataset preparation completed successfully
+2025-02-20 14:20:25,293 - INFO - Starting training...
+2025-02-20 14:21:56,747 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:21:56,747 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:21:56,747 - INFO - Starting dataset preparation...
+2025-02-20 14:21:56,748 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:21:56,753 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:21:56,755 - INFO - Dataset preparation completed successfully
+2025-02-20 14:22:02,623 - INFO - Starting training...
+2025-02-20 14:24:52,970 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:24:52,970 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:24:52,970 - INFO - Starting dataset preparation...
+2025-02-20 14:24:52,971 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:24:52,977 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:24:52,979 - INFO - Dataset preparation completed successfully
+2025-02-20 14:24:59,110 - INFO - Starting training...
+2025-02-20 14:29:14,498 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:29:14,498 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:29:14,498 - INFO - Starting dataset preparation...
+2025-02-20 14:29:14,499 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:29:14,505 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:29:14,507 - INFO - Dataset preparation completed successfully
+2025-02-20 14:29:20,371 - INFO - Starting training...
+2025-02-20 14:32:56,339 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:32:56,339 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:32:56,339 - INFO - Starting dataset preparation...
+2025-02-20 14:32:56,340 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:32:56,345 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:32:56,347 - INFO - Dataset preparation completed successfully
+2025-02-20 14:33:02,067 - INFO - Starting training...
