@@ -99,8 +99,16 @@ class LoRATrainer:
         )
         
     def setup_datasets(self):
-        self.train_dataset = LoRADataset(self.config, "train")
-        self.test_dataset = LoRADataset(self.config, "test")
+        # If in test mode, use `test_dataset` for both training and validation
+        if self.config.mode == "test":
+            self.logger.info("Test mode active: Using 512px test dataset for both training and validation.")
+            self.train_dataset = LoRADataset(self.config, "test")  # Use test dataset for training
+            self.test_dataset = LoRADataset(self.config, "test")
+        else:
+            self.logger.info("Production mode active: Using 1024px train dataset for both training and validation.")
+            self.train_dataset = LoRADataset(self.config, "train")
+            self.test_dataset = LoRADataset(self.config, "test")
+
         
         self.train_dataloader = DataLoader(
             self.train_dataset,
@@ -163,11 +171,18 @@ class LoRATrainer:
                     ).input_ids.to(self.device)
 
                     with torch.no_grad():
-                        # Generate text embeddings from both encoders
                         text_embeds_1 = self.text_encoder_1(prompt_ids).last_hidden_state  # [batch, 77, 1280]
                         pooled_text_embeds_1 = self.text_encoder_1(prompt_ids).pooler_output  # [batch, 1280]
-                        text_embeds_2 = self.text_encoder_2(prompt_ids).last_hidden_state  # [batch, 77, 1280]
+                        text_embeds_2 = self.text_encoder_2(prompt_ids).last_hidden_state  # [batch, 77, 768]
                         pooled_text_embeds_2 = self.text_encoder_2(prompt_ids).pooler_output  # [batch, 1280]
+
+                    # Fix: Concatenate everything to match SDXL expectations
+                    text_embeds = torch.cat([
+                        text_embeds_1,  # [batch, 77, 1280]
+                        text_embeds_2,  # [batch, 77, 768]
+                        pooled_text_embeds_1.unsqueeze(1).repeat(1, 77, 1),  # Broadcast to [batch, 77, 1280]
+                    ], dim=-1)  # Final shape: [batch, 77, 2816]
+
 
                     # Concatenate all embeddings for SDXL
                     text_embeds = torch.cat([
@@ -187,16 +202,19 @@ class LoRATrainer:
                     aspect_ratio = target_size[0] / target_size[1]
 
                     add_time_ids = torch.tensor([
-                        aspect_ratio,
-                        *original_size,
-                        *crops_coords_top_left,
-                        target_size[0] / original_size[0]
-                    ], device=self.device, dtype=text_embeds.dtype).unsqueeze(0)  # [1, 6]
+                        1.0,  # aspect_ratio (dummy value)
+                        1024, 1024,  # original_size
+                        0, 0,  # crops_coords_top_left
+                        1.0  # target_size / original_size (dummy value)
+                    ], device=self.device, dtype=text_embeds.dtype).unsqueeze(0).unsqueeze(1)  # [1, 1, 6]
+
+                    # Expand to match `text_embeds` shape
+                    add_time_ids = add_time_ids.expand(text_embeds.shape[0], 77, -1)  # [batch, 77, 6]
 
                     # Set added conditioning kwargs with correct shapes
                     added_cond_kwargs = {
-                        "text_embeds": micro_cond.squeeze(1),  # [batch, 1280]
-                        "time_ids": add_time_ids  # [batch, 6]
+                        "text_embeds": text_embeds,  # [batch, 77, 2816]
+                        "time_ids": add_time_ids  # [batch, 77, 6]
                     }
 
                     # Debug prints to verify shapes
@@ -289,7 +307,31 @@ class LoRATrainer:
                 noisy_latents = self.model.scheduler.add_noise(latents, noise, timesteps)
                 
                 # Get UNet predictions
-                noise_pred = self.model.unet(noisy_latents, timesteps, prompt_ids).sample
+                # Generate time conditioning for validation
+                add_time_ids = torch.tensor([
+                    1.0,  # aspect_ratio (dummy value)
+                    1024, 1024,  # original_size
+                    0, 0,  # crops_coords_top_left
+                    1.0  # target_size / original_size (dummy value)
+                ], device=self.device, dtype=torch.float32).unsqueeze(0)  # [1, 6]
+
+                # Ensure text embeddings
+                with torch.no_grad():
+                    text_embeds_1 = self.text_encoder_1(prompt_ids).last_hidden_state
+                    text_embeds_2 = self.text_encoder_2(prompt_ids).last_hidden_state
+                text_embeds = torch.cat([text_embeds_1, text_embeds_2], dim=-1)  # [batch, 77, 2816]
+
+                # Add missing added_cond_kwargs
+                added_cond_kwargs = {
+                    "text_embeds": text_embeds,
+                    "time_ids": add_time_ids.expand(text_embeds.shape[0], -1)
+                }
+
+                # Forward pass through UNet
+                noise_pred = self.model.unet(
+                    noisy_latents, timesteps, prompt_ids, added_cond_kwargs=added_cond_kwargs
+                ).sample
+
                 loss = torch.nn.functional.mse_loss(noise_pred, noise)
                 val_loss += loss.item()
                 

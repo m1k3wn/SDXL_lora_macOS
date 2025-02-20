@@ -36,7 +36,14 @@ def main():
         if not preparator.prepare_dataset(force_resize=args.force_resize):
             logger.error("Dataset preparation failed")
             sys.exit(1)
-    
+            
+    # Use smaller images for test runs        
+    if args.mode == "test":
+        print("Running test mode: Using 512px images for both training and validation.")
+
+        # Override dataset path to use test dataset for training in test mode
+        config.dataset_path = config.paths["test_dataset"]
+
     trainer = LoRATrainer(config)
     trainer.train()
 

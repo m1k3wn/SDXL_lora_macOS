@@ -239,3 +239,10 @@
 2025-02-20 14:32:56,345 - INFO - Resized 0 images, skipped 40
 2025-02-20 14:32:56,347 - INFO - Dataset preparation completed successfully
 2025-02-20 14:33:02,067 - INFO - Starting training...
+2025-02-20 14:40:39,535 - INFO - Starting LoRA training for project: WOH_lora
+2025-02-20 14:40:39,535 - INFO - Trigger word: WOH portrait style
+2025-02-20 14:40:39,535 - INFO - Starting dataset preparation...
+2025-02-20 14:40:39,536 - INFO - Found 20 test and 20 train images in metadata
+2025-02-20 14:40:39,552 - INFO - Resized 0 images, skipped 40
+2025-02-20 14:40:39,554 - INFO - Dataset preparation completed successfully
+2025-02-20 14:41:05,948 - INFO - Starting training...
