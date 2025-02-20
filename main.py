@@ -19,12 +19,14 @@ def setup_logging():
 
 def main():
     parser = argparse.ArgumentParser(description='Train LoRA for SDXL')
+    parser.add_argument('--mode', choices=['test', 'production'], default='production', help='Training mode (test=5 epochs, production=100 epochs)')
     parser.add_argument('--force-resize', action='store_true', help='Force image resizing')
     parser.add_argument('--skip-validation', action='store_true', help='Skip dataset validation')
     args = parser.parse_args()
     
     logger = setup_logging()
-    config = ProjectConfig()
+    config = ProjectConfig(mode=args.mode)
+
     
     logger.info(f"Starting LoRA training for project: {config.project_name}")
     logger.info(f"Trigger word: {config.trigger_word}")

@@ -1,6 +1,9 @@
 import logging
 import json
 from pathlib import Path
+from PIL import Image
+import numpy as np
+from transformers import CLIPTextModel, CLIPTokenizer
 import torch
 from accelerate import Accelerator
 from diffusers import StableDiffusionXLPipeline, AutoencoderKL, DPMSolverMultistepScheduler
@@ -37,12 +40,15 @@ class LoRADataset(Dataset):
         image = Image.open(image_path).convert('RGB')
         image = self.transform(image)
         
-        # Construct prompt with trigger word
-        prompt = f"{self.config.trigger_word}, {item['caption']}"
+        # Construct prompt with trigger word and style
+        style_config = self.config.get_training_config()['style']
+        base_prompt = style_config['base_prompt'].format(trigger_word=style_config['trigger_word'])
+        prompt = f"{item['caption']}, {base_prompt}"
         
         return {
             'image': image,
-            'prompt': prompt
+            'prompt': prompt,
+            'negative_prompt': style_config['negative_prompt']
         }
 
 class LoRATrainer:
@@ -50,8 +56,15 @@ class LoRATrainer:
         self.config = config
         self.logger = logging.getLogger(__name__)
         self.setup_accelerator()
+        self.setup_tokenizer()
         self.load_model()
         self.setup_datasets()
+        
+    def setup_tokenizer(self):
+        self.tokenizer = CLIPTokenizer.from_pretrained(
+            self.config.paths['base_model'],
+            subfolder="tokenizer"
+        )
         
     def setup_accelerator(self):
         self.accelerator = Accelerator(
@@ -110,8 +123,11 @@ class LoRATrainer:
         self.logger.info("Starting training...")
         training_config = self.config.get_training_config()['training']
         
+        # Setup LoRA before training
+        self.setup_lora()
+        
         optimizer = torch.optim.AdamW(
-            self.model.parameters(),
+            [p for n, p in self.model.named_parameters() if "lora" in n],
             lr=training_config['learning_rate']
         )
         
@@ -123,28 +139,35 @@ class LoRATrainer:
         global_step = 0
         for epoch in range(training_config['num_epochs']):
             self.model.train()
-            progress_bar = tqdm(total=len(train_dataloader), disable=not self.accelerator.is_local_main_process)
+            progress_bar = tqdm(total=len(train_dataloader))
             progress_bar.set_description(f"Epoch {epoch}")
             
             for batch in train_dataloader:
                 with self.accelerator.accumulate(self.model):
-                    # Get model output
-                    outputs = self.model(
-                        input_ids=batch["input_ids"],
-                        attention_mask=batch["attention_mask"],
-                        return_dict=True
-                    )
+                    # Get conditioning input
+                    prompt_ids = self.tokenizer(
+                        batch["prompt"], 
+                        padding="max_length",
+                        truncation=True,
+                        max_length=77,
+                        return_tensors="pt"
+                    ).input_ids.to(self.model.device)
                     
-                    loss = outputs.loss
+                    # Forward pass
+                    loss = self.model(
+                        prompt_ids=prompt_ids,
+                        images=batch["image"].to(self.model.device),
+                        return_loss=True
+                    ).loss
+                    
                     self.accelerator.backward(loss)
-                    
                     if self.accelerator.sync_gradients:
                         self.accelerator.clip_grad_norm_(self.model.parameters(), 1.0)
-                        
                     optimizer.step()
                     optimizer.zero_grad()
-                    
+                
                 progress_bar.update(1)
+                progress_bar.set_postfix(loss=loss.item())
                 global_step += 1
                 
                 if global_step % training_config['save_steps'] == 0:
@@ -164,39 +187,49 @@ class LoRATrainer:
         self.accelerator.save(self.model.state_dict(), save_path)
         
     def validate(self):
-        """Run validation on test dataset"""
         self.model.eval()
         val_loss = 0
         
         with torch.no_grad():
             for batch in self.test_dataloader:
-                outputs = self.model(
-                    input_ids=batch["input_ids"],
-                    attention_mask=batch["attention_mask"],
-                    return_dict=True
-                )
-                val_loss += outputs.loss.item()
+                prompt_ids = self.tokenizer(
+                    batch["prompt"],
+                    padding="max_length",
+                    truncation=True,
+                    max_length=77,
+                    return_tensors="pt"
+                ).input_ids.to(self.model.device)
+                
+                loss = self.model(
+                    prompt_ids=prompt_ids,
+                    images=batch["image"].to(self.model.device),
+                    return_loss=True
+                ).loss
+                val_loss += loss.item()
                 
         val_loss /= len(self.test_dataloader)
         self.logger.info(f"Validation Loss: {val_loss:.4f}")
-        
-        # Generate sample images
         self.generate_samples()
         
     def generate_samples(self, num_samples: int = 2):
-        """Generate sample images during validation"""
         sample_dir = self.config.paths['output'] / "samples"
         sample_dir.mkdir(exist_ok=True)
         
+        style_config = self.config.get_training_config()['style']
+        
         for i in range(num_samples):
             sample = next(iter(self.test_dataloader))
-            image = self.model(
+            
+            images = self.model(
                 prompt=sample['prompt'],
-                num_inference_steps=30,
-                guidance_scale=7.5
+                negative_prompt=sample['negative_prompt'],
+                num_inference_steps=40,
+                guidance_scale=9.0,
+                height=1024,
+                width=1024
             ).images[0]
             
-            image.save(sample_dir / f"sample_{i}.png")
+            images[0].save(sample_dir / f"sample_{i}.png")
 
 def main():
     config = ProjectConfig()

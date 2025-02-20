@@ -8,7 +8,10 @@ PROJECT_NAME = "WOH_lora"
 TRIGGER_WORD = "WOH portrait style"
 
 class ProjectConfig:
-    def __init__(self):
+    def __init__(self, mode="production"):
+        # Test or production mode 
+        self.mode = mode
+
         # Base paths
         self.base_path = Path("/Volumes/Desktop SSD/AI-Projects/SDXL_LORAS")
         
@@ -19,10 +22,10 @@ class ProjectConfig:
         
         # Create project directory if it doesn't exist
         self.project_dir.mkdir(parents=True, exist_ok=True)
-        
+
         # Define all project paths
         self.paths = {
-            "base_model": self.base_path / "base_model",
+            "base_model": Path("/base_model"),
             "dataset": {
                 "test": self.project_dir / "dataset/test_dataset",    # 512px images
                 "train": self.project_dir / "dataset/train_dataset",  # 1024px images
@@ -50,12 +53,9 @@ class ProjectConfig:
                     path.mkdir(parents=True, exist_ok=True)
     
     def get_training_config(self):
-        """Get training-specific configuration"""
-        return {
+        base_config = {
             "training": {
-                "learning_rate": 1e-4,
                 "batch_size": 1,
-                "num_epochs": 100,
                 "gradient_accumulation_steps": 4,
                 "seed": 42,
                 "mixed_precision": "fp16",
@@ -73,7 +73,24 @@ class ProjectConfig:
                 "negative_prompt": "photorealistic, photograph, color, watercolor, 3d render, anime, cartoon"
             }
         }
-    
+
+        if self.mode == "test":
+            base_config["training"].update({
+                "learning_rate": 2e-4,
+                "num_epochs": 5,
+                "save_steps": 50,
+                "validation_steps": 25
+            })
+        else:
+            base_config["training"].update({
+                "learning_rate": 1e-4,
+                "num_epochs": 100,
+                "save_steps": 100,
+                "validation_steps": 50
+            })
+
+        return base_config
+        
     def __str__(self):
         """Pretty print the configuration"""
         return f"""Project Configuration:
