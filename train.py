@@ -69,15 +69,15 @@ class LoRATrainer:
     def setup_accelerator(self):
         self.accelerator = Accelerator(
             gradient_accumulation_steps=self.config.get_training_config()['training']['gradient_accumulation_steps'],
-            mixed_precision="fp16"
+            mixed_precision="no", 
+            device_placement=True
         )
         
     def load_model(self):
         self.model = StableDiffusionXLPipeline.from_pretrained(
             self.config.paths['base_model'],
-            torch_dtype=torch.float16,
-            use_safetensors=True,
-            variant="fp16"
+            torch_dtype=torch.float32,
+            use_safetensors=True
         )
         
         self.model.scheduler = DPMSolverMultistepScheduler.from_config(
